@@ -353,19 +353,22 @@ Comprobaciones realizadas:
 
 ## 🌐 Publicación en GitHub
 
-La consigna de la cátedra requiere un **repositorio en GitHub** con un README detallado e instrucciones de instalación. El proyecto ya está preparado para publicarse.
+La entrega está publicada en GitHub:
 
-Pasos sugeridos (no ejecutados por el asistente):
+- **Repositorio:** https://github.com/OctaCrescini/proteger_rutas
+- **Rama de entrega:** `feature/food-store-auth`
+- **URL directa de la rama:** https://github.com/OctaCrescini/proteger_rutas/tree/feature/food-store-auth
+
+La rama `main` permanece intacta. No se realizó merge ni Pull Request: la entrega se encuentra exclusivamente en `feature/food-store-auth`. Para consultar el README de la entrega, seleccioná esa rama en GitHub.
+
+### Clonar la entrega
 
 ```bash
-# Crear el repositorio en GitHub y luego:
-git remote add origin https://github.com/<usuario>/<repositorio>.git
-git add .
-git commit -m "Entrega: Food Store con autenticación, roles y catálogo"
-git push -u origin feature/food-store-auth
+git clone --branch feature/food-store-auth --single-branch https://github.com/OctaCrescini/proteger_rutas.git
+cd proteger_rutas
+corepack pnpm install --frozen-lockfile
+corepack pnpm dev
 ```
-
-Luego se puede abrir un Pull Request hacia `main` o renombrar la rama según lo indique la cátedra. El README debe quedar visible en la página principal del repositorio.
 
 > No se incluyen `node_modules/` ni `dist/`: se regeneran con `corepack pnpm install` y `corepack pnpm build`.
 
