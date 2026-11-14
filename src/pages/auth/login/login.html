@@ -1,37 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Food Store | Iniciar sesión</title>
 </head>
 
 <body>
-    <h1> Login</h1>
+    <main id="app" class="auth" hidden>
+        <section class="tarjeta-auth">
+            <h1>Food Store</h1>
+            <h2>Iniciar sesión</h2>
 
-    <form id="form">
+            <form id="form-login" novalidate>
+                <div class="campo">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com"
+                        autocomplete="email" required>
+                </div>
+                <div class="campo">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Tu contraseña"
+                        autocomplete="current-password" required>
+                </div>
 
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="off" placeholder="example@example.com">
-        </div>
-        <div>
-            <label for="password">password</label>
-            <input type="password" id="password" name="password" autocomplete="off" placeholder="********">
-        </div>
-        <div>
-            <label for="rol">Rol</label>
-            <select name="rol" id="rol">
-                <option value="">Seleccione un rol</option>
-                <option value="client">Cliente</option>
-                <option value="admin">Admin</option>
-            </select>
-        </div>
+                <p id="form-message" class="mensaje" role="alert" aria-live="polite" hidden></p>
 
-        <button type="submit">Ingresar</button>
+                <button type="submit">Ingresar</button>
+            </form>
 
-    </form>
+            <p class="auth__enlace">¿No tenés cuenta? <a href="../registro/registro.html">Registrate acá</a></p>
+
+            <p class="auth__demo">Demo académica: admin@foodstore.local / Admin123!</p>
+        </section>
+    </main>
 
     <script type="module" src="./login.ts"></script>
 </body>

@@ -1,0 +1,348 @@
+/*
+ * Estilos del panel de administración.
+ * El HTML original no traía hoja de estilos, por lo que se reutilizan
+ * los tokens visuales de Food Store (catálogo y auth) para mantener
+ * una identidad coherente sin cargar el CSS del catálogo en esta página.
+ */
+
+:root {
+  --color-primario: #ff6347;
+  --color-primario-oscuro: #ff4500;
+  --color-fondo: #f7f7f7;
+  --color-superficie: #ffffff;
+  --color-texto: #333;
+  --color-texto-suave: #666;
+  --color-borde: #e5e5e5;
+  --color-error: #b3261e;
+  --sombra: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --radio: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body.pagina-admin {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-fondo);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-texto);
+  line-height: 1.5;
+}
+
+/* El wrapper solo agrupa el contenido: sus hijos son flex items del body. */
+.panel {
+  display: contents;
+}
+
+/* Encabezado */
+
+.pagina-admin header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 2rem;
+  background-color: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.pagina-admin header h1 {
+  margin: 0;
+  color: var(--color-primario);
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.pagina-admin header nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.sesion__email {
+  color: var(--color-texto-suave);
+  font-size: 0.85rem;
+}
+
+.sesion__salir {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--color-primario);
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--color-primario);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sesion__salir:hover {
+  background-color: var(--color-primario);
+  color: #fff;
+}
+
+/* Contenido */
+
+.pagina-admin main {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.8rem 2rem 2.5rem;
+}
+
+.panel__seccion {
+  margin-bottom: 1.6rem;
+  padding: 1.4rem 1.5rem;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.panel__seccion h2 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+}
+
+.etiqueta-consulta {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background-color: #fff2ef;
+  color: var(--color-primario);
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.panel__aviso,
+.panel__nota {
+  margin: 0 0 1rem;
+  color: var(--color-texto-suave);
+  font-size: 0.88rem;
+}
+
+.panel__aviso {
+  padding: 0.7rem 0.9rem;
+  border-left: 3px solid var(--color-primario);
+  background-color: #fff7f5;
+}
+
+.panel__nota {
+  margin-bottom: 0;
+}
+
+.pagina-admin details .panel__nota {
+  margin-top: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Tabla */
+
+.tabla-scroll {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.tabla-scroll__ayuda {
+  display: none;
+}
+
+.pagina-admin table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.pagina-admin th,
+.pagina-admin td {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-borde);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.pagina-admin thead th {
+  background-color: #fff2ef;
+  color: var(--color-texto);
+  font-size: 0.78rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.pagina-admin tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.pagina-admin tbody tr:hover {
+  background-color: #fff7f5;
+}
+
+.tabla__imagen {
+  display: block;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.tabla__acciones {
+  white-space: nowrap;
+}
+
+.tabla__accion {
+  display: inline-block;
+  margin-right: 0.6rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.tabla__accion--deshabilitada {
+  color: #9a9a9a;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* Botones */
+
+.boton {
+  padding: 0.55rem 0.9rem;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.boton--primario {
+  border: 1px solid var(--color-primario);
+  background-color: var(--color-primario);
+  color: #fff;
+}
+
+.boton--primario:hover {
+  background-color: var(--color-primario-oscuro);
+  border-color: var(--color-primario-oscuro);
+}
+
+/* Formulario rápido */
+
+.pagina-admin details summary {
+  cursor: pointer;
+  font-size: 1.05rem;
+}
+
+.pagina-admin form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem 1.2rem;
+  margin-top: 1.1rem;
+}
+
+.campo {
+  margin: 0;
+}
+
+.campo--ancho {
+  grid-column: 1 / -1;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background-color: #fff;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--color-primario-oscuro);
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.pagina-admin form > .boton {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+.mensaje {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #f5c2bd;
+  border-radius: 6px;
+  background-color: #fdecea;
+  color: var(--color-error);
+  font-size: 0.9rem;
+}
+
+/* Pie de página */
+
+.pagina-admin footer {
+  padding: 1.2rem 2rem;
+  background-color: var(--color-superficie);
+  border-top: 1px solid var(--color-borde);
+  color: var(--color-texto-suave);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.pagina-admin footer p {
+  margin: 0;
+}
+
+/* Pantallas chicas */
+
+@media (max-width: 760px) {
+  .pagina-admin header {
+    padding: 1rem 1.2rem;
+  }
+
+  .pagina-admin main {
+    padding: 1.4rem 1.2rem 2rem;
+  }
+
+  .panel__seccion {
+    padding: 1.1rem 1rem;
+  }
+
+  .pagina-admin form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tabla-scroll__ayuda {
+    display: inline;
+  }
+}

@@ -1,15 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Food Store | Catálogo</title>
 </head>
 
-<body>
-    <h1>Hola desde el cliente</h1>
-    <button id="logoutButton">Logout</button>
+<body class="pagina-catalogo">
+    <div id="app" class="catalogo" hidden>
+        <header>
+            <h1>Food Store</h1>
+            <nav aria-label="Navegación principal">
+                <ul>
+                    <li><a href="./home.html" aria-current="page">Inicio</a></li>
+                    <li><a href="#">Mis Pedidos</a></li>
+                    <li><a href="#">Carrito</a></li>
+                </ul>
+            </nav>
+            <div class="sesion">
+                <span id="session-email" class="sesion__email"></span>
+                <button id="logoutButton" class="sesion__salir" type="button">Cerrar sesión</button>
+            </div>
+        </header>
+        <hr>
+        <aside>
+            <h2>Categorías</h2>
+            <ul id="lista-categorias"></ul>
+        </aside>
+        <main>
+            <form id="form-busqueda">
+                <label for="BuscarProducto">Buscar Productos:</label>
+                <input id="BuscarProducto" name="buscar" type="text" placeholder="Ej: Hamburguesas"
+                    autocomplete="off" />
+                <button type="submit"> Buscar </button>
+            </form>
+            <h2>Productos Destacados</h2>
+            <section id="contenedor-productos" aria-live="polite"></section>
+        </main>
+        <footer>
+            <p>&copy; 2026 Food Store. Todos los derechos reservados</p>
+            <p> Contacto: <a href="mailto:info@foodstore.com">info@foodstore.com</a></p>
+        </footer>
+    </div>
+
     <script type="module" src="./home.ts"></script>
 </body>
 

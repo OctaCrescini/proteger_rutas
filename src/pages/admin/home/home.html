@@ -1,17 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Food Store | Panel de administración</title>
 </head>
 
-<body>
-    <h1>Hola desde la vista de admin</h1>
-    <button id="logoutButton">Logout</button>
+<body class="pagina-admin">
+    <div id="app" class="panel" hidden>
+        <header>
+            <h1>Panel de Administración</h1>
+            <nav aria-label="Sesión">
+                <span id="session-email" class="sesion__email"></span>
+                <button id="logoutButton" class="sesion__salir" type="button">Cerrar Sesión</button>
+            </nav>
+        </header>
+
+        <main>
+            <section class="panel__seccion">
+                <h2>Gestión de Productos <span class="etiqueta-consulta">Solo consulta</span></h2>
+                <p class="panel__aviso">
+                    Este panel muestra el catálogo compartido en modo consulta. Las acciones de edición,
+                    eliminación y alta de productos no están implementadas en este práctico.
+                </p>
+                <button id="nuevo-producto" class="boton boton--primario" type="button">+ Nuevo Producto</button>
+                <div class="tabla-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-productos"></tbody>
+                    </table>
+                </div>
+                <p class="panel__nota">
+                    Las acciones Editar y Eliminar se muestran deshabilitadas porque no tienen implementación.
+                    <span class="tabla-scroll__ayuda">Desplazá la tabla horizontalmente para ver todas las columnas.</span>
+                </p>
+            </section>
+
+            <section class="panel__seccion">
+                <details id="detalle-producto" open>
+                    <summary><strong>Agregar Producto Rápido</strong></summary>
+                    <p class="panel__nota">
+                        Formulario demostrativo: no guarda cambios ni modifica el catálogo.
+                    </p>
+                    <form id="form-producto" action="#" method="post">
+                        <p class="campo">
+                            <label for="nombre">Nombre del Producto:</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Ej: Lomito Completo" required>
+                        </p>
+                        <p class="campo">
+                            <label for="precio">Precio:</label>
+                            <input type="text" id="precio" name="precio" inputmode="decimal" placeholder="Ej: 30000"
+                                required>
+                        </p>
+                        <p class="campo">
+                            <label for="stock">Stock Inicial:</label>
+                            <input type="number" id="stock" name="stock" min="0" required>
+                        </p>
+                        <p class="campo">
+                            <label for="categoria">Categoría:</label>
+                            <select id="categoria" name="categoria" required>
+                                <option value="" disabled selected>Seleccione una opción</option>
+                                <option value="hamburguesas">Hamburguesas</option>
+                                <option value="pizzas">Pizzas</option>
+                                <option value="papas">Papas Fritas</option>
+                                <option value="bebidas">Bebidas</option>
+                            </select>
+                        </p>
+                        <p class="campo campo--ancho">
+                            <label for="descripcion">Descripción:</label>
+                            <textarea id="descripcion" name="descripcion" rows="5"
+                                placeholder="Ingresa los ingredientes..."></textarea>
+                        </p>
+                        <p id="admin-message" class="mensaje" role="status" aria-live="polite" hidden></p>
+                        <button type="submit" class="boton boton--primario">Guardar Producto</button>
+                    </form>
+                </details>
+            </section>
+        </main>
+
+        <footer>
+            <p>Panel de Administración Food Store v1.0</p>
+        </footer>
+    </div>
+
     <script type="module" src="./home.ts"></script>
 </body>
-
 
 </html>
